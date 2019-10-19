@@ -15,3 +15,7 @@ func createDate(calendar: Calendar = .current, year: Int, month: Int, day: Int) 
 func calendarDayDisplayString(fromDay day: Int) -> String {
   day == 0 ? "  " : addZeroIfNeeded(day)
 }
+
+let isNotFake: (DateContext) -> Bool = {
+  !$0.isFake
+}

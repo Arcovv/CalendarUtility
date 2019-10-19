@@ -1,6 +1,6 @@
 import Foundation
 
-struct DateContext {
+public struct DateContext {
   let calendar: Calendar
   let timeZone: TimeZone
   let date: Date
@@ -46,10 +46,23 @@ struct DateContext {
     return lastDayOfThisMonth == date
   }
   
-  init(calendar: Calendar = .current, timeZone: TimeZone = .current, date: Date) {
+  public let isFake: Bool
+  
+  public init(calendar: Calendar = .current, timeZone: TimeZone = .current, date: Date = .init(), isFake: Bool = false) {
     self.calendar = calendar
     self.timeZone = timeZone
     self.date = date
     self.dateComponents = calendar.dateComponents(in: timeZone, from: date)
+    self.isFake = isFake
   }
+
+  static let fake = DateContext(isFake: true)
+}
+
+extension DateContext: CustomStringConvertible {
+
+  public var description: String {
+    isFake ? "  " : calendarDayDisplayString(fromDay: day)
+  }
+
 }

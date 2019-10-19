@@ -2,14 +2,16 @@ import XCTest
 @testable import CalendarUtility
 
 final class CalendarUtilityTests: XCTestCase {
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(CalendarUtility().text, "Hello, World!")
-    }
-
-    static var allTests = [
-        ("testExample", testExample),
-    ]
+  func testExample() {
+    let startDate = createDate(year: 2019, month: 01, day: 01)
+    let endDate = createDate(year: 2019, month: 12, day: 31)
+    let engine = Engine(startDate: startDate, endDate: endDate)
+    
+    engine.run()
+    engine.prettyPrint()
+  }
+  
+  static var allTests = [
+    ("testExample", testExample),
+  ]
 }
