@@ -1,6 +1,6 @@
 import Foundation
 
-public final class Engine {
+public final class CalendarEngine {
   
   public let calendar: Calendar
   public let timeZone: TimeZone
