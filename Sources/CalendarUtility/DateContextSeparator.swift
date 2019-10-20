@@ -30,4 +30,7 @@ public enum DateContextSeparator {
 public struct DateContextSeparating {
   public var extracted: ArraySlice<DateContext>
   public var remained: ArraySlice<DateContext>
+  public var usefulExtracted: ArraySlice<DateContext> {
+    extracted.filter { !$0.isPlaceholder }
+  }
 }
