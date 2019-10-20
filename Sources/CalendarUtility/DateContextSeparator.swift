@@ -1,28 +1,6 @@
-func weeklyDays(with contexts: ArraySlice<DateContext>) -> ([Int], ArraySlice<DateContext>) {
-  var result = Array(repeating: 0, count: 7)
+public enum DateContextSeparator {
   
-  for context in contexts {
-    // Fill the weekly days array by weekday index.
-    result[context.weekdayIndex] = context.day
-    
-    // When context is SAT, the result is whole filled.
-    if context.weekdayIndex == result.count - 1 {
-      break
-    }
-    
-    // When context is the last day, should ignore the remained elements.
-    if context.isLastDayOfThisMonth {
-      break
-    }
-  }
-  
-  let remainedContexts = contexts.dropFirst(result.filter(isNotZero).count)
-  return (result, remainedContexts)
-}
-
-enum DateContextSeparator {
-  
-  static func separating(rawValue contexts: ArraySlice<DateContext>, by count: Int) -> DateContextSeparating {
+  public static func separating(rawValue contexts: ArraySlice<DateContext>, by count: Int) -> DateContextSeparating {
     var result = Array(repeating: DateContext.fake, count: count)
     
     for context in contexts {
@@ -49,7 +27,7 @@ enum DateContextSeparator {
   
 }
 
-struct DateContextSeparating {
-  var extracted: ArraySlice<DateContext>
-  var remained: ArraySlice<DateContext>
+public struct DateContextSeparating {
+  public var extracted: ArraySlice<DateContext>
+  public var remained: ArraySlice<DateContext>
 }

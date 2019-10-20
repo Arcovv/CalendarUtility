@@ -65,13 +65,13 @@ public final class CalendarEngine {
     return monthContexts
   }
   
-  internal func prettyPrint() {
+  public func prettyPrint() {
     for context in monthContexts {
       print(context.info.name.uppercased())
 
       for week in context.weeks {
         let weekString = week
-          .map { $0.description }
+          .map { $0.prettyDisplay }
           .joined(separator: " ")
         print(weekString)
       }

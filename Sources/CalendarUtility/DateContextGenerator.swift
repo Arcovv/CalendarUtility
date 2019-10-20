@@ -1,7 +1,7 @@
 import Foundation
 
-struct DateContextGenerator {
-  static func make(calendar: Calendar = .current, startDate: Date, endDate: Date) -> [DateContext] {
+public struct DateContextGenerator {
+  public static func make(calendar: Calendar = .current, startDate: Date, endDate: Date) -> [DateContext] {
     var result = [DateContext(date: startDate)]
     var nextDate = calendar.date(byAdding: .day, value: 1, to: startDate)!
     

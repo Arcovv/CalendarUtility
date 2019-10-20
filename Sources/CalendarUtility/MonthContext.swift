@@ -1,4 +1,4 @@
 public struct MonthContext {
-  let info: MonthInfo
-  let weeks: ArraySlice<ArraySlice<DateContext>>
+  public let info: MonthInfo
+  public let weeks: ArraySlice<ArraySlice<DateContext>>
 }

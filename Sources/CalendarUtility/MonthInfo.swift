@@ -1,4 +1,4 @@
-struct MonthInfo {
-  let name: String
-  let weeksCount: Int
+public struct MonthInfo {
+  public let name: String
+  public let weeksCount: Int
 }

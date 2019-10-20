@@ -1,12 +1,12 @@
 import Foundation
 
-struct MonthInfoGenerator {
+public struct MonthInfoGenerator {
   
   /// Get month contexts
   /// - Parameter calendar: Set the calendar
   /// - Parameter timeZone: Set the time zone
   /// - Parameter date: Month contexts after the date (included)
-  static func make(calendar: Calendar = .current, timeZone: TimeZone = .current, startAt date: Date) -> [MonthInfo] {
+  public static func make(calendar: Calendar = .current, timeZone: TimeZone = .current, startAt date: Date) -> [MonthInfo] {
     var result: [MonthInfo] = []
     var copyDate = date
     let months = calendar.monthSymbols

@@ -1,48 +1,48 @@
 import Foundation
 
 public struct DateContext {
-  let calendar: Calendar
-  let timeZone: TimeZone
-  let date: Date
-  let dateComponents: DateComponents
+  public let calendar: Calendar
+  public let timeZone: TimeZone
+  public let date: Date
+  public let dateComponents: DateComponents
   
-  var weekday: Int {
+  public var weekday: Int {
     calendar.component(.weekday, from: date)
   }
   
-  var weekdayIndex: Int {
+  public var weekdayIndex: Int {
     weekday - 1
   }
   
-  var weekOfMonth: Int {
+  public var weekOfMonth: Int {
     calendar.component(.weekOfMonth, from: date)
   }
   
-  var day: Int {
+  public var day: Int {
     calendar.component(.day, from: date)
   }
   
-  var month: Int {
+  public var month: Int {
     calendar.component(.month, from: date)
   }
   
-  var year: Int {
+  public var year: Int {
     calendar.component(.year, from: date)
   }
   
-  var firstDayOfNextMonth: Date {
+  public var firstDayOfNextMonth: Date {
     let thisMonthFirstDateComponentsFragment = DateComponents(year: year, month: month)
     let thisMonthFirstDayFragment = calendar.date(from: thisMonthFirstDateComponentsFragment)!
     let nextMonthFirstDay = calendar.date(byAdding: .month, value: 1, to: thisMonthFirstDayFragment)!
     return nextMonthFirstDay
   }
   
-  var lastDayOfThisMonth: Date {
+  public var lastDayOfThisMonth: Date {
     let lastDayOfThisMonth = calendar.date(byAdding: .day, value: -1, to: firstDayOfNextMonth)!
     return lastDayOfThisMonth
   }
   
-  var isLastDayOfThisMonth: Bool {
+  public var isLastDayOfThisMonth: Bool {
     return lastDayOfThisMonth == date
   }
   
@@ -59,9 +59,9 @@ public struct DateContext {
   static let fake = DateContext(isFake: true)
 }
 
-extension DateContext: CustomStringConvertible {
+extension DateContext {
 
-  public var description: String {
+  public var prettyDisplay: String {
     isFake ? "  " : calendarDayDisplayString(fromDay: day)
   }
 
