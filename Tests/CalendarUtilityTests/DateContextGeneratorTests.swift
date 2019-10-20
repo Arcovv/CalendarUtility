@@ -28,4 +28,10 @@ final class DateContextGeneratorTests: XCTestCase {
     
     XCTAssertEqual(sut.count, 0)
   }
+  
+  static var allTests = [
+    ("testFrom20191006To20191019CountIs14", testFrom20191006To20191019CountIs14),
+    ("testStartDateIsTheSameWithEndDateCountIs1", testStartDateIsTheSameWithEndDateCountIs1),
+    ("testEndDateIsSmallerThanStartDateCount0", testEndDateIsSmallerThanStartDateCount0)
+  ]
 }
