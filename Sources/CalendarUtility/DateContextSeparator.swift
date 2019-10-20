@@ -1,7 +1,7 @@
 public enum DateContextSeparator {
   
   public static func separating(rawValue contexts: ArraySlice<DateContext>, by count: Int) -> DateContextSeparating {
-    var result = Array(repeating: DateContext.fake, count: count)
+    var result = Array(repeating: DateContext.placeholder, count: count)
     
     for context in contexts {
       // Fill the weekly days array by weekday index.

@@ -17,5 +17,5 @@ func calendarDayDisplayString(fromDay day: Int) -> String {
 }
 
 let isNotFake: (DateContext) -> Bool = {
-  !$0.isFake
+  !$0.isPlaceholder
 }

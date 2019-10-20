@@ -46,23 +46,23 @@ public struct DateContext {
     return lastDayOfThisMonth == date
   }
   
-  public let isFake: Bool
+  public let isPlaceholder: Bool
   
-  public init(calendar: Calendar = .current, timeZone: TimeZone = .current, date: Date = .init(), isFake: Bool = false) {
+  public init(calendar: Calendar = .current, timeZone: TimeZone = .current, date: Date = .init(), isPlaceholder: Bool = false) {
     self.calendar = calendar
     self.timeZone = timeZone
     self.date = date
     self.dateComponents = calendar.dateComponents(in: timeZone, from: date)
-    self.isFake = isFake
+    self.isPlaceholder = isPlaceholder
   }
 
-  static let fake = DateContext(isFake: true)
+  public static let placeholder = DateContext(isPlaceholder: true)
 }
 
 extension DateContext {
 
   public var prettyDisplay: String {
-    isFake ? "  " : calendarDayDisplayString(fromDay: day)
+    isPlaceholder ? "  " : calendarDayDisplayString(fromDay: day)
   }
 
 }
