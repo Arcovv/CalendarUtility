@@ -1,7 +1,6 @@
 import XCTest
-
 import CalendarUtilityTests
 
 var tests = [XCTestCaseEntry]()
-tests += CalendarUtilityTests.allTests()
+test += DateContextTests.allTests()
 XCTMain(tests)

@@ -48,7 +48,12 @@ public struct DateContext {
   
   public let isPlaceholder: Bool
   
-  public init(calendar: Calendar = .current, timeZone: TimeZone = .current, date: Date = .init(), isPlaceholder: Bool = false) {
+  public init(
+    calendar: Calendar = .current,
+    timeZone: TimeZone = .current,
+    date: Date = Date(timeIntervalSince1970: 0),
+    isPlaceholder: Bool = false)
+  {
     self.calendar = calendar
     self.timeZone = timeZone
     self.date = date
