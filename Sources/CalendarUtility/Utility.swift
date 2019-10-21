@@ -20,9 +20,16 @@ let isNotFake: (DateContext) -> Bool = {
   !$0.isPlaceholder
 }
 
-func applyMonthInfos(_ infos: [MonthInfo]) -> ([WeekContext]) -> [WeekContext] {
+func applyMonthInfo(_ info: MonthInfo) -> ([WeekContext]) -> [WeekContext] {
   return { inputs in
-    zip(infos, inputs)
-      .map { WeekContext(monthInfo: $0.0, days: $0.1.days)}
+    var result: [WeekContext] = []
+    
+    for (index, week) in inputs.enumerated() {
+      result.append(
+        WeekContext(monthInfo: info, days: week.days, weekOfMonth: index + 1)
+      )
+    }
+    
+    return result
   }
 }

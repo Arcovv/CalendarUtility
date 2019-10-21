@@ -45,14 +45,13 @@ public enum Separator {
   
   public static func monthContexts(weekContexts: [WeekContext], monthInfos: [MonthInfo]) -> [MonthContext] {
     var monthContexts: [MonthContext] = []
-    let weekContexts = applyMonthInfos(monthInfos)(weekContexts)
     var weekContextsSlice = ArraySlice(weekContexts)
 
     for monthInfo in monthInfos {
       let weeks = weekContextsSlice.prefix(monthInfo.weeksCount)
       let context = MonthContext(
         info: monthInfo,
-        weeks: Array(weeks)
+        weeks: applyMonthInfo(monthInfo)(Array(weeks))
       )
       monthContexts.append(context)
       weekContextsSlice = weekContextsSlice.dropFirst(monthInfo.weeksCount)
