@@ -1,5 +1,5 @@
 public struct WeekContext {
-  public let monthInfo: MonthInfo?
+  public let monthInfo: MonthInfo
   public let days: [DateContext]
   public let weekOfMonth: Int
 
