@@ -19,3 +19,10 @@ func calendarDayDisplayString(fromDay day: Int) -> String {
 let isNotFake: (DateContext) -> Bool = {
   !$0.isPlaceholder
 }
+
+func applyWeekOfMonth(weeksCount: Int) -> ([WeekContext]) -> [WeekContext] {
+  return { inputs in
+    zip(1...weeksCount, inputs)
+      .map { WeekContext(weekOfMonth: $0.0, days: $0.1.days) }
+  }
+}

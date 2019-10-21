@@ -37,30 +37,11 @@ public final class CalendarEngine {
   }
   
   private func generateMonthContexts() -> [MonthContext] {
-    var monthWithWeeks: [ArraySlice<DateContext>] = []
-    let daysCountAWeek = 7
-    
-    var separating = DateContextSeparator.separating(rawValue: ArraySlice(dateContexts), by: daysCountAWeek)
-    monthWithWeeks.append(separating.extracted)
-
-    while !separating.remained.isEmpty {
-      separating = DateContextSeparator.separating(rawValue: separating.remained, by: daysCountAWeek)
-      monthWithWeeks.append(separating.extracted)
-    }
+    let weekContexts = Separator.weekContexts(rawValue: ArraySlice(dateContexts))
     
     let monthInfos = MonthInfoGenerator.make(calendar: calendar, timeZone: timeZone, startAt: startDate)
-    var monthContexts: [MonthContext] = []
-    var monthWithWeeksSlice = ArraySlice(monthWithWeeks)
-
-    for monthInfo in monthInfos {
-      let weeks = monthWithWeeksSlice.prefix(monthInfo.weeksCount)
-      let context = MonthContext(
-        info: monthInfo,
-        weeks: weeks
-      )
-      monthContexts.append(context)
-      monthWithWeeksSlice = monthWithWeeksSlice.dropFirst(monthInfo.weeksCount)
-    }
+    
+    let monthContexts = Separator.monthContexts(weekContexts: weekContexts, monthInfos: monthInfos)
     
     return monthContexts
   }
@@ -70,7 +51,8 @@ public final class CalendarEngine {
       print(context.info.name.uppercased())
 
       for week in context.weeks {
-        let weekString = week
+        
+        let weekString = week.days
           .map { $0.prettyDisplay }
           .joined(separator: " ")
         print(weekString)

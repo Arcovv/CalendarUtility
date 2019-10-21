@@ -9,7 +9,7 @@ final class DateContextSeparatorTests: XCTestCase {
     let startDate = createDate(calendar: calendar, year: 2019, month: 10, day: 01)
     let endDate = createDate(calendar: calendar, year: 2019, month: 10, day: 12)
     let contexts = DateContextGenerator.make(calendar: calendar, startDate: startDate, endDate: endDate)
-    let separating = DateContextSeparator.separating(rawValue: ArraySlice(contexts), by: 7)
+    let separating = Separator.separating(rawValue: ArraySlice(contexts))
     
     XCTAssertEqual(separating.extracted.count, 7)
     XCTAssertEqual(separating.remained.count, 7)
