@@ -4,5 +4,5 @@ import CalendarUtilityTests
 var tests = [XCTestCaseEntry]()
 test += DateContextTests.allTests()
 test += DateContextGeneratorTests.allTests()
-test += DateContextSeparatorTests.allTests()
+test += SeparatorTests.allTests()
 XCTMain(tests)

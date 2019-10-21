@@ -1,4 +1,4 @@
-public struct MonthInfo {
+public struct MonthInfo: Equatable {
   public let name: String
   public let weeksCount: Int
   
