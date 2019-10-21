@@ -20,9 +20,9 @@ let isNotFake: (DateContext) -> Bool = {
   !$0.isPlaceholder
 }
 
-func applyWeekOfMonth(weeksCount: Int) -> ([WeekContext]) -> [WeekContext] {
+func applyMonthInfos(_ infos: [MonthInfo]) -> ([WeekContext]) -> [WeekContext] {
   return { inputs in
-    zip(1...weeksCount, inputs)
-      .map { WeekContext(weekOfMonth: $0.0, days: $0.1.days) }
+    zip(infos, inputs)
+      .map { WeekContext(monthInfo: $0.0, days: $0.1.days)}
   }
 }
